@@ -3,12 +3,15 @@ import ReactDom from 'react-dom';
 import App from './components/App';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 import { Provider } from 'react-redux';
+import reduxThunk from 'redux-thunk';
+
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDom.render(
-    <Provider store={createStore(reducers, {})}>
+    <Provider store={store}>
         <BrowserRouter>
             <App />
         </BrowserRouter>
