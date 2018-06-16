@@ -6,11 +6,9 @@ fieldset {
     color:green;
     border: 2px solid saddlebrown;
     display: flex;
-    justify-content: flex-end;
 }
 
 legend {
     color:blue;
-    justify-content: flex-end;
     text-align: center;
 }

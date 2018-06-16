@@ -1,16 +1,20 @@
+import { AUTH_USER } from '../actions/actionTypes';
+
 const INITIAL_STATE = {
-    authticated: '',
-    errorMessage: ''
+    fail: null,
+    state: null,
+    success: null
 };
 
 const auth = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-          case "test":
-                return {
-                      ...action.payload
-                };
-          default:
-                return state;
+        case AUTH_USER:
+            return {
+                ...state,
+                ...action.payload
+            };
+        default:
+            return state;
     }
 };
 
