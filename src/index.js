@@ -7,8 +7,11 @@ import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
+import { checkToken } from './actions/index';
 
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+const store = createStore(reducers, applyMiddleware(reduxThunk));
+
+store.dispatch(checkToken(localStorage.getItem('token')));
 
 ReactDom.render(
     <Provider store={store}>

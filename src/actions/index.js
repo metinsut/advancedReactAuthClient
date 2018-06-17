@@ -7,7 +7,39 @@ export const signup = (data, callback) => async dispatch => {
         type: AUTH_USER,
         payload: response.data
     });
+    localStorage.setItem('token', response.data.success.user.token);
     if (!response.data.fail) {
         callback();
     }
+};
+
+export const checkToken = token => dispatch => {
+    dispatch({
+        type: AUTH_USER,
+        payload: {
+            fail: null,
+            state: null,
+            success: {
+                user: {
+                    token: token
+                }
+            }
+        }
+    });
+};
+
+export const signout = () => {
+    localStorage.removeItem('token');
+    return {
+        type: AUTH_USER,
+        payload: {
+            fail: null,
+            state: null,
+            success: {
+                user: {
+                    token: null
+                }
+            }
+        }
+    };
 };
