@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Header extends React.Component {
+
     render() {
+
         return (
-            <div>
+            <header>
                 <Link to="/">Redux Auth</Link>
-                <Link to="/signup">Sign Up</Link>
-                <Link to="/signin">Sign In</Link>
-                <Link to="/signout">Sign Out</Link>
-                <Link to="/feature">Feature</Link>
-            </div>
+                {!this.props.auth ? (
+                    <Fragment>
+                        <Link to="/signup">Sign Up</Link>
+                        <Link to="/signin">Sign In</Link>
+                    </Fragment>
+                ) : (
+                    <Fragment>
+                        <Link to="/signout">Sign Out</Link>
+                        <Link to="/feature">Feature</Link>
+                    </Fragment>
+                )}
+            </header>
         );
     }
 }
 
-export default Header;
+const mapStateToProps = state => {
+    return {
+        auth: state.auth.success.user.token
+    };
+};
+
+export default connect(mapStateToProps)(Header);

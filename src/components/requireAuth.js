@@ -17,7 +17,6 @@ export default ChildComponent => {
             }
         }
         render() {
-            console.log(this.props);
             return <ChildComponent {...this.props} />;
         }
     }

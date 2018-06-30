@@ -5,6 +5,7 @@ import Wellcome from '../components/Welcome';
 import Signup from '../components/auth/SignUp';
 import SignOut from '../components/auth/SignOut';
 import Feature from '../components/Feature';
+import SignIn from './auth/SignIn';
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
             <Switch>
                 <Route exact path="/" component={Wellcome} />
                 <Route path="/signup" component={Signup} />
+                <Route path="/signin" component={SignIn} />
                 <Route path="/feature" component={Feature} />
                 <Route path="/signout" component={SignOut} />
             </Switch>

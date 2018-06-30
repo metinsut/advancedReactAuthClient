@@ -7,7 +7,26 @@ export const signup = (data, callback) => async dispatch => {
         type: AUTH_USER,
         payload: response.data
     });
-    localStorage.setItem('token', response.data.success.user.token);
+
+    if (response.data.success) {
+        localStorage.setItem('token', response.data.success.user.token);
+    }
+
+    if (!response.data.fail) {
+        callback();
+    }
+};
+
+export const signin = (data, callback) => async dispatch => {
+    const response = await axios.post('http://localhost:3002/signin', data);
+    await dispatch({
+        type: AUTH_USER,
+        payload: response.data
+    });
+    if (response.data.success) {
+        localStorage.setItem('token', response.data.success.user.token);
+    }
+
     if (!response.data.fail) {
         callback();
     }
