@@ -3,7 +3,6 @@ import requireAuth from "../components/requireAuth";
 
 class Feature extends React.Component {
    componentDidMount = () => {
-      console.log("1");
       const token = localStorage.getItem("token");
       fetch("http://localhost:3002/home", {
          method: "POST",
