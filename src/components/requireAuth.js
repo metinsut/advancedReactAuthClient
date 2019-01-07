@@ -13,7 +13,6 @@ export default ChildComponent => {
 
       componentDidUpdate(prevProps, prevState) {
          if (this.props.auth.user.token !== prevProps.auth.user.token) {
-            console.log("go");
             this.shouldNavigateAway();
          }
       }
